@@ -4,6 +4,7 @@ import { mergeClasses } from '@material-ui/styles'
 
 
 import useStyles from './styles';
+import CartItem from './CartItem/CartItem';
 
 const Cart = ({ cart }) => {
     const isEmpty = !cart.total_items;
@@ -18,7 +19,7 @@ const Cart = ({ cart }) => {
         <Grid container spacing={3}>
             {cart.line_items.map((item) => (
                 <Grid item xs={12} sm={4} key={item.id}>
-                    <div>{item.name}</div>
+                    <CartItem item={item}/>
                 </Grid>
             ))}
         </Grid>
