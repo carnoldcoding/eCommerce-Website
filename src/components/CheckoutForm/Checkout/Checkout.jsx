@@ -4,12 +4,24 @@ import { Paper, Stepper, Step, StepLabel,
 import { CallMissedSharp } from '@material-ui/icons'
 
 import useStyles from './styles';
+import AddressForm from '../AddressForm'
+import PaymentForm from '../PaymentForm'
 
 const steps = ['Shipping Address', 'Payment Details'];
 
 const Checkout = () => {
     const [activeStep, setStep] = useState(0);
     const classes = useStyles();
+
+    const Confirmation = () => (
+        <div>
+            Confirmation
+        </div>
+    )
+
+    const Form = () => activeStep == 0
+        ? <AddressForm />
+        : <PaymentForm />
 
     return (
         <>
@@ -24,6 +36,7 @@ const Checkout = () => {
                             </Step>
                         ))}
                     </Stepper>
+                    {activeStep === steps.length ? <Confirmation /> : <Form />}
                 </Paper>
             </main>
         </>
